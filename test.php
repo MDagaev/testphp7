@@ -31,4 +31,5 @@ function random_string ($str_length, $str_characters)
 
 echo random_string(81,$str_characters);
 // проверка git
+// Проверка GIT 2
 ?>

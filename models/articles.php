@@ -1,28 +1,60 @@
 <?php
+    //Вызвать все статьи из БД////////////////////////////////////////////////////////////////////
+    function articles_all($link)
+    {
+        //Запрос
+        $query = "SELECT * FROM  articles ORDER BY id DESC";
+        $result = mysqli_query($link, $query);
 
-function articles_all(){
-    $art1 = ["id"=>1, "title"=>"Title1", "date"=>"2018-05-04", "content"=>"Content1"];
-    $art2 = ["id"=>2, "title"=>"Title2", "date"=>"2018-05-04", "content"=>"Content2"];
+        if(!$result){
+            die(mysqli_error($link));
+        }
 
-    $arr[0] = $art1;
-    $arr[1] = $art2;
+        //Извлечение из БД
+        $n = mysqli_num_rows($result);
+        $articles = array();
 
-    return $arr;
-}
+        for($i = 0; $i < $n; $i++)
+        {
+            $row = mysqli_fetch_assoc($result);
+            $articles[] = $row;
+        }
 
-function articles_get($id){
-    return ["id"=>1, "title"=>"Это простой заголовок", "date"=>"2018-05-04", "content"=>"Здесь будет статья"];
+        return $articles;
 
-}
+    }
 
-function articles_new($title, $date, $content){
+    //Вызвать одну статью из БД//////////////////////////////////////////////////////////////////////
+    function articles_get($link, $id_article)
+    {
+        //Запрос
+        $query = sprintf("SELECT * FROM  articles WHERE id=%d", (int)$id_article);
+        $result = mysqli_query($link, $query);
 
-}
+        if(!$result){
+            die(mysqli_error($link));
+        }
 
-function articles_edit($id, $title,$date,$content){
+        //Извлечение из БД
+        $article = mysqli_fetch_assoc($result);
 
-}
 
-function articles_delete($id){
+        return $article;
+    }
+
+    //Добавить статью в БД///////////////////////////////////////////////////////////////////////////
+    function articles_new($link, $title, $date, $content)
+    {
+
+    }
+
+    //Вызвать статью из БД и отредактировать///////////////////////////////////////////////////////////
+    function articles_edit($link, $id, $title, $date, $content)
+    {
+
+    }
+
+    //Удалить статью из БД////////////////////////////////////////////////////////////////////////////
+    function articles_delete($link, $id){
 
 }

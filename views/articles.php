@@ -15,7 +15,7 @@
                 <em>Опубликовано: <?=$a['date']?> </em>
                 <p><?=$a['content']?></p>
             </div>
-            <?php endforeach ?>
+            <?php endforeach?>
         </div>
         <footer>
         <p>Мой первый блог <br>Copyright &copy; 2018</p>
